@@ -1,7 +1,9 @@
 package com.ringcentral.definitions;
 
 
-// Opt-out record
+/**
+ * Opt-out record
+ */
 public class OptOutResponse {
     /**
      * Phone number in [E.164](https://www.itu.int/rec/T-REC-E.164-201011-I) format from which the recipient has opted out
@@ -13,6 +15,15 @@ public class OptOutResponse {
      * Example: 15551234567
      */
     public String to;
+    /**
+     * Status of a phone number
+     * Enum: OptIn, OptOut
+     */
+    public String status;
+    /**
+     * Enum: Recipient, Account, Upstream, Carrier
+     */
+    public String source;
 
     public OptOutResponse from(String from) {
         this.from = from;
@@ -21,6 +32,16 @@ public class OptOutResponse {
 
     public OptOutResponse to(String to) {
         this.to = to;
+        return this;
+    }
+
+    public OptOutResponse status(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public OptOutResponse source(String source) {
+        this.source = source;
         return this;
     }
 }

@@ -9,6 +9,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.text.MessageFormat;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class RestClient {
     public static final String SANDBOX_SERVER = "https://platform.devtest.ringcentral.com";
@@ -104,6 +105,13 @@ public class RestClient {
             .grant_type("authorization_code")
             .code(authCode)
             .redirect_uri(redirectUri);
+        return authorize(getTokenRequest);
+    }
+
+    public TokenInfo authorize(String jwt) throws IOException, RestException {
+        GetTokenRequest getTokenRequest = new GetTokenRequest()
+            .grant_type("urn:ietf:params:oauth:grant-type:jwt-bearer")
+            .assertion(jwt);
         return authorize(getTokenRequest);
     }
 
@@ -313,10 +321,18 @@ public class RestClient {
         return response;
     }
 
+    public static Logger logger = Logger.getLogger("com.ringcentral");
     public ResponseBody request(HttpMethod httpMethod, String endpoint, Object queryParameters, RequestBody
         requestBody) throws IOException, RestException {
-        Response response = requestRaw(httpMethod, endpoint, queryParameters, requestBody);
-        return response.peekBody(Long.MAX_VALUE);
+        try {
+            Response response = requestRaw(httpMethod, endpoint, queryParameters, requestBody);
+            logger.fine(String.format("[HTTP %s %s] %s %s", httpMethod.toString(), response.code(), this.server, endpoint));
+            return response.peekBody(Long.MAX_VALUE);
+        }catch (RestException re) {
+            Response response = re.response;
+            logger.fine(String.format("[HTTP %s %s] %s %s", httpMethod.toString(), response.code(), this.server, endpoint));
+            throw re;
+        }
     }
 
     public String authorizeUri(AuthorizeRequest request) {
@@ -366,5 +382,9 @@ public class RestClient {
 
     public com.ringcentral.paths.scim.Index scim() {
         return new com.ringcentral.paths.scim.Index(this, "v2");
+    }
+
+    public com.ringcentral.paths.analytics.Index analytics() {
+        return new com.ringcentral.paths.analytics.Index(this);
     }
 }

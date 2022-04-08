@@ -1,7 +1,9 @@
 package com.ringcentral.definitions;
 
 
-// Query parameters for operation listEmergencyLocations
+/**
+ * Query parameters for operation listEmergencyLocations
+ */
 public class ListEmergencyLocationsParameters {
     /**
      * Filters entries containing the specified substring in address and name fields. The characters range is 0-64; not case-sensitive. If empty then the filter is ignored
@@ -24,8 +26,9 @@ public class ListEmergencyLocationsParameters {
      */
     public String domesticCountryId;
     /**
-     * Comma-separated list of fields to order results prefixed by plus sign &#039;+&#039; (ascending order) or minus sign &#039;-&#039; (descending order). Supported values: &#039;address&#039;
-     * Default: address
+     * Comma-separated list of fields to order results prefixed by plus sign &#039;+&#039; (ascending order) or minus sign &#039;-&#039; (descending order). The default value is `+address`
+     * Default: +address
+     * Enum: name, siteName, address, addressStatus, usageStatus
      */
     public String orderBy;
     /**

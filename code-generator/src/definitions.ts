@@ -19,6 +19,8 @@ const normalizeField = (f: Field): Field => {
     f.type = 'Long';
   } else if (f.type === 'array') {
     f.type = `${normalizeField(f.items!).type}[]`;
+  } else if (f.type === 'dict') {
+    f.type = `java.util.Map<String, ${normalizeField(f.items!).type}>`;
   } else if (f.type === 'boolean') {
     f.type = 'Boolean';
   } else if (f.type === 'string') {
@@ -84,7 +86,16 @@ const generateField = (f: Field, modelName: string) => {
 };
 
 parsed.models.forEach(model => {
-  let code = `${model.description ? '\n    // ' + model.description : ''}
+  let code = `${
+    model.description
+      ? '\n    /**\n' +
+        model.description
+          .split('\n')
+          .map(line => '* ' + line)
+          .join('\n') +
+        '\n*/'
+      : ''
+  }
 public class ${model.name}
 {
     ${model.fields.map(f => generateField(f, model.name)).join('\n\n    ')}

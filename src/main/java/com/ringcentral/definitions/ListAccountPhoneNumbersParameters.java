@@ -1,7 +1,9 @@
 package com.ringcentral.definitions;
 
 
-// Query parameters for operation listAccountPhoneNumbers
+/**
+ * Query parameters for operation listAccountPhoneNumbers
+ */
 public class ListAccountPhoneNumbersParameters {
     /**
      * Indicates the page number to retrieve. Only positive number values are accepted
@@ -15,7 +17,7 @@ public class ListAccountPhoneNumbersParameters {
     public Long perPage;
     /**
      * Usage type of a phone number
-     * Enum: MainCompanyNumber, AdditionalCompanyNumber, CompanyNumber, DirectNumber, CompanyFaxNumber, ForwardedNumber, ForwardedCompanyNumber, ContactCenterNumber, ConferencingNumber, MeetingsNumber, BusinessMobileNumber
+     * Enum: MainCompanyNumber, AdditionalCompanyNumber, CompanyNumber, DirectNumber, CompanyFaxNumber, ForwardedNumber, ForwardedCompanyNumber, ContactCenterNumber, ConferencingNumber, MeetingsNumber, BusinessMobileNumber, IntegrationNumber
      */
     public String[] usageType;
     /**

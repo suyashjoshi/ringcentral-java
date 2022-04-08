@@ -1,6 +1,6 @@
 # RingCentral SDK for Java
 
-[![Build Status](https://github.com/ringcentral/ringcentral-java/actions/workflows/gradle.yml/badge.svg)](https://github.com/ringcentral/ringcentral-java/actions)
+[![Build Status](https://github.com/ringcentral/ringcentral-java/actions/workflows/test.yml/badge.svg)](https://github.com/ringcentral/ringcentral-java/actions)
 [![Coverage Status](https://coveralls.io/repos/github/ringcentral/ringcentral-java/badge.svg?branch=master)](https://coveralls.io/github/ringcentral/ringcentral-java?branch=master)
 [![Reference](https://img.shields.io/badge/Javadoc-reference-blue?logo=java)](https://ringcentral.github.io/ringcentral-java/)
 [![Chat](https://img.shields.io/badge/chat-on%20glip-orange.svg)](https://ringcentral.github.io/join-ringcentral/)
@@ -93,6 +93,21 @@ You can find [sample code for all the endpoints](./samples.md).
 There is also lots of useful code for your reference in our [test cases](./src/test/java/com/ringcentral).
 
 Auto-generated [JavaDoc](https://ringcentral.github.io/ringcentral-java/).
+
+
+## Logging
+
+The logging is implemented according to [Java Logging Overview](https://docs.oracle.com/javase/10/core/java-logging-overview.htm)
+
+To enable printing log to console:
+
+```java
+RestClient.logger.setLevel(Level.FINE);
+```
+
+For more log output channels, please refer to [Handlers](https://docs.oracle.com/javase/10/core/java-logging-overview.htm#GUID-B83B652C-17EA-48D9-93D2-563AE1FF8EDA__HANDLERS-4D023767).
+
+[Demo project](https://github.com/tylerlong/rc-logging-demo-java).
 
 
 ## Binary content downloading

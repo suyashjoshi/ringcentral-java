@@ -37,7 +37,8 @@ public class CompanyPhoneNumberInfo {
      */
     public String phoneNumber;
     /**
-     * Status of a phone number. If the value is &#039;Normal&#039;, the phone number is ready to be used. Otherwise it is an external number not yet ported to RingCentral
+     * Status of a phone number. If the value is &#039;Normal&#039;, the phone number is ready to be used. If the value is &#039;Pending&#039; it is an external number not yet ported to RingCentral.
+     * Enum: Normal, Pending, PortedIn, Temporary
      */
     public String status;
     /**
@@ -47,7 +48,7 @@ public class CompanyPhoneNumberInfo {
     public String type;
     /**
      * Usage type of a phone number. Usage type of a phone number. Numbers of &#039;NumberPool&#039; type wont&#039;t be returned for phone number list requests
-     * Enum: MainCompanyNumber, AdditionalCompanyNumber, CompanyNumber, DirectNumber, CompanyFaxNumber, ForwardedNumber, ForwardedCompanyNumber, ContactCenterNumber, ConferencingNumber, MeetingsNumber, NumberPool, BusinessMobileNumber
+     * Enum: MainCompanyNumber, AdditionalCompanyNumber, CompanyNumber, DirectNumber, CompanyFaxNumber, ForwardedNumber, ForwardedCompanyNumber, ContactCenterNumber, ConferencingNumber, MeetingsNumber, NumberPool, BusinessMobileNumber, IntegrationNumber
      */
     public String usageType;
     /**
