@@ -74,6 +74,12 @@ publishing {
     }
 }
 
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
 signing {
     sign publishing.publications.mavenJava
 }
