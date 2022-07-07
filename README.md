@@ -109,6 +109,9 @@ For more log output channels, please refer to [Handlers](https://docs.oracle.com
 
 [Demo project](https://github.com/tylerlong/rc-logging-demo-java).
 
+### Experimental 
+
+The SDK also has using Apache Log4J that can potentially replace Java standard logging in future as it supports more comprehensive logging.
 
 ## Binary content downloading
 
