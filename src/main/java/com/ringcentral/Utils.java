@@ -9,15 +9,22 @@ import okio.Buffer;
 import java.io.IOException;
 import java.text.MessageFormat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Utils {
+
+    private static final Logger logger = LogManager.getLogger(Utils.class);
+
     public static Gson gson = new Gson();
 
     public static String formatHttpMessage(Response response, Request request) {
         String responseBodyString = "";
         try {
             responseBodyString = response.peekBody(Long.MAX_VALUE).string();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        catch (IOException e) {
+            logger.error("An exception occured!", e);
         }
         return MessageFormat.format("HTTP Response\n=============\nstatus code: {0}\n\n{1}\n{2}\n\nHTTP Request\n============\nHTTP {3} {4}\n\n{5}\n{6}",
             response.code(),
